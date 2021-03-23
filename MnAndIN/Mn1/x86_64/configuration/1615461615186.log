@@ -1,0 +1,99 @@
+!SESSION 2021-03-11 18:20:14.822 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_261
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -console
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.461
+!MESSAGE Bundle reference:file:org.eclipse.om2m.binding.http_1.1.0.20210208-1651.jar@2:start not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.462
+!MESSAGE Bundle reference:file:org.eclipse.om2m.binding.service_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.463
+!MESSAGE Bundle reference:file:org.eclipse.om2m.commons_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.467
+!MESSAGE Bundle reference:file:org.eclipse.om2m.commons.logging_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.468
+!MESSAGE Bundle reference:file:org.eclipse.om2m.core_1.1.0.20210208-1651.jar@4:start not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.469
+!MESSAGE Bundle reference:file:org.eclipse.om2m.core.service_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.469
+!MESSAGE Bundle reference:file:org.eclipse.om2m.dal_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.470
+!MESSAGE Bundle reference:file:org.eclipse.om2m.dal.driver.sample_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.470
+!MESSAGE Bundle reference:file:org.eclipse.om2m.datamapping.jaxb_1.1.0.20210208-1651.jar@1:start not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.471
+!MESSAGE Bundle reference:file:org.eclipse.om2m.datamapping.service_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.472
+!MESSAGE Bundle reference:file:org.eclipse.om2m.flexcontainer.service_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.473
+!MESSAGE Bundle reference:file:org.eclipse.om2m.hue.api_1.1.0.20210208-1651.jar@5:start not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.474
+!MESSAGE Bundle reference:file:org.eclipse.om2m.hue.impl_1.1.0.20210208-1651.jar@5:start not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.474
+!MESSAGE Bundle reference:file:org.eclipse.om2m.interworking.service_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.475
+!MESSAGE Bundle reference:file:org.eclipse.om2m.ipe.dal_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.476
+!MESSAGE Bundle reference:file:org.eclipse.om2m.ipe.sample_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.477
+!MESSAGE Bundle reference:file:org.eclipse.om2m.ipe.sample.sdt_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.477
+!MESSAGE Bundle reference:file:org.eclipse.om2m.ipe.sdt_1.1.0.20210208-1651.jar@6 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.478
+!MESSAGE Bundle reference:file:org.eclipse.om2m.persistence.eclipselink_1.1.0.20210208-1651.jar@2:start not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.479
+!MESSAGE Bundle reference:file:org.eclipse.om2m.persistence.mongodb_1.1.0.20210208-1651.jar@2 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.480
+!MESSAGE Bundle reference:file:org.eclipse.om2m.persistence.service_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.480
+!MESSAGE Bundle reference:file:org.eclipse.om2m.sample.ipe_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.481
+!MESSAGE Bundle reference:file:org.eclipse.om2m.sdt.api_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.482
+!MESSAGE Bundle reference:file:org.eclipse.om2m.sdt.home_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.482
+!MESSAGE Bundle reference:file:org.eclipse.om2m.sdt.home.driver_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.483
+!MESSAGE Bundle reference:file:org.eclipse.om2m.sdt.home.hue_1.1.0.20210208-1651.jar@6:start not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.484
+!MESSAGE Bundle reference:file:org.eclipse.om2m.sdt.home.mocked.devices_1.1.0.20210208-1651.jar@6 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.485
+!MESSAGE Bundle reference:file:org.eclipse.om2m.sdt.home.netatmo_1.1.0.20210208-1651.jar@6 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.485
+!MESSAGE Bundle reference:file:org.eclipse.om2m.testsuite.flexcontainer_1.1.0.20210208-1651.jar@4 not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.486
+!MESSAGE Bundle reference:file:org.eclipse.om2m.webapp.resourcesbrowser.json_1.1.0.20210208-1651.jar@4:start not found.
+
+!ENTRY org.eclipse.osgi 4 0 2021-03-11 18:20:15.488
+!MESSAGE Bundle reference:file:pax-confman-propsloader-0.2.3.jar@1:start not found.

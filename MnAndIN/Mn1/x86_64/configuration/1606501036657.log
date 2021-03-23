@@ -1,0 +1,8 @@
+!SESSION 2020-11-28 01:17:16.269 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_261
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+
+!ENTRY org.eclipse.osgi 4 0 2020-11-28 01:17:16.760
+!MESSAGE The -clean (osgi.clean) option was not successful. Unable to clean the storage area: C:\Users\Microsoft Windows\OneDrive\Desktop\test-backend\mn-full-fixed\x86_64\configuration\org.eclipse.osgi
