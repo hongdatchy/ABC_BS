@@ -1,10 +1,4 @@
 package org.eclipse.om2m.hongdatchy;
- 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 import org.eclipse.om2m.hongdatchy.common.RestHttpClient;
 import org.json.JSONObject;
@@ -27,7 +21,7 @@ public class NodeA {
 	private static String cseNameIn = "in-name";
 	private static String aeNameIn = "bs-server";
 	private static String cntNameIn = "service";
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) {
 		
 		JSONObject obj = new JSONObject();
 		obj.put("rn", aeName);
@@ -48,8 +42,8 @@ public class NodeA {
 		obj.put("cnf", "application/text");
 		JSONObject con = new JSONObject();
 		con.put("service", "getsum");
-		con.put("parameter", "totalslot");
-		con.put("destination", "b c");
+		con.put("parameter", "Total");
+		con.put("destination", "c");
 		obj.put("con", con.toString());
 		resource = new JSONObject();
 		resource.put("m2m:cin", obj);

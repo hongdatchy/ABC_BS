@@ -4,8 +4,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
+import org.eclipse.om2m.hongdatchy.common.HttpResponse;
 import org.eclipse.om2m.hongdatchy.common.RestHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -28,13 +32,13 @@ public class BsServer {
 	private static int aePort = 1500;	
 	private static String subName="bs-server-sub";
 	private static String cntName1 = "service";
-	private static String cntName2 = "command";
+	private static String cntName2 = "result";
 	private static String targetBsServerContainer= cseId + "/" + cseName + "/" + aeName + "/" + cntName1;
-// HTTP POST http://127.0.0.1:8080/~/in-cse/in-name/bs-server/service
-// HTTP POST http://127.0.0.1:8080/~/mn-cse-c/mn-name-c/node-c/data
+	private static String targetBsServerContainer2= cseId + "/" + cseName + "/" + aeName + "/" + cntName2;
 	private static String csePoa = cseProtocol+"://"+cseIp+":"+csePort;
 	private static String appPoa = aeProtocol+"://"+aeIp+":"+aePort;
- 
+	private static List<String> list = new ArrayList<String>();
+	
 	public static void main(String[] args) {
  
 		HttpServer server = null;
@@ -66,7 +70,7 @@ public class BsServer {
         resource.put("m2m:cnt", obj);
 		RestHttpClient.post(originator, csePoa+"/~/"+cseId+"/"+cseName+"/"+aeName, resource.toString(), 3);
 		
-//		create cnt command
+//		create cnt result
         obj = new JSONObject();
         obj.put("rn", cntName2);
         resource = new JSONObject();
@@ -83,6 +87,17 @@ public class BsServer {
 		resource = new JSONObject();		
 		resource.put("m2m:sub", obj);
 		RestHttpClient.post(originator, csePoa+"/~/"+targetBsServerContainer, resource.toString(), 23);
+		
+//		sub cnt bs with cnt result
+		array = new JSONArray();
+		array.put("/"+cseId+"/"+cseName+"/"+aeName);
+		obj = new JSONObject();
+		obj.put("nu", array);
+		obj.put("rn", subName);
+		obj.put("nct", 2);
+		resource = new JSONObject();		
+		resource.put("m2m:sub", obj);
+		RestHttpClient.post(originator, csePoa+"/~/"+targetBsServerContainer2, resource.toString(), 23);
 	}
  
 	static class MyHandler implements HttpHandler {
@@ -114,8 +129,8 @@ public class BsServer {
 					if (ty == 4) {
 						JSONObject con = new JSONObject(cin.getString("con"));
 						if(con.has("service")) {
-							if(con.get("service").toString().equals("getsum")) {
-								String[] destinations = con.get("destination").toString().split(" ");
+							if(con.getString("service").equals("getsum")) {
+								String[] destinations = con.getString("destination").split(" ");
 								JSONObject obj = new JSONObject();
 								JSONObject resource = new JSONObject();
 								for(String des: destinations) {
@@ -123,16 +138,45 @@ public class BsServer {
 									obj.put("cnf", "application/text");
 									JSONObject con1 = new JSONObject();
 									con1.put("command", "getsum");
-									con1.put("parameter", "totalslot");
+									con1.put("parameter", con.getString("parameter"));
+									con1.put("destination", con.getString("destination"));
 									con1.put("id", id);
 									obj.put("con", con1.toString());
 									resource = new JSONObject();
 									resource.put("m2m:cin", obj);
-									System.out.println(getDestination(des));
-									RestHttpClient.post(originator, csePoa+"/~/"+ getDestination(des) + "/"+"command", resource.toString(), 4);
+									RestHttpClient.post(originator, csePoa+"/~/"+ "mn-cse-"+des+"/"+"mn-name-"+des+"/"+"node-"+des + "/"+"command", resource.toString(), 4);
 								}
 								id++;
 							}
+						}else if(con.has("result")) {	
+							if(con.getString("result").equals("getsum")) {
+								String id = String.valueOf(con.getInt("id"));
+								list.add(con.getInt("id") + " " + cin.getString("rn"));
+								String des = con.getString("destination");
+								String parameter = con.getString("parameter");
+								int numberOfDestination = des.split(" ").length;
+								List<String> listFilter =  list.stream()
+									.filter(x -> x.split(" ")[0].equals(id)).collect(Collectors.toList());
+								if(listFilter.size() == numberOfDestination) {
+									int s= 0;
+									for(String str : listFilter) {
+										HttpResponse httpResponse = RestHttpClient.get(originator, csePoa+"/~/"+cseId+"/"+cseName+"/"+aeName+"/"+cntName2 + "/" +str.split(" ")[1]);
+										JSONObject cin1 = new JSONObject(httpResponse.getBody()).getJSONObject("m2m:cin");
+										s += new JSONObject(cin1.getString("con")).getInt("value"); 
+										list.remove(str);
+									}
+									JSONObject obj = new JSONObject();
+									obj.put("cnf", "application/text");
+									con = new JSONObject();
+									con.put("parameter", parameter);
+									con.put("destination", des);
+									con.put("sum", s);
+									obj.put("con", con.toString());
+									JSONObject resource = new JSONObject();
+									resource.put("m2m:cin", obj);
+									RestHttpClient.post(originator, csePoa+"/~/"+"mn-cse-a"+"/"+"mn-name-a"+"/"+"node-a" + "/" + "data", resource.toString(), 4);
+								}
+							}	
 						}
 					}
 				}	
@@ -149,9 +193,6 @@ public class BsServer {
 			}		
 		}
 		
-		public String getDestination(String des) {
-			return "mn-cse-"+des+"/"+"mn-name-"+des+"/"+"node-"+des;
-		}
 		
 		
 	}
